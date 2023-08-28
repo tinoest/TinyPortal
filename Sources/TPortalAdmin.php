@@ -131,7 +131,8 @@ function TPortalAdmin()
 			$tpsub = 'articles';
 			$context['TPortal']['subaction'] = $_GET['sa'];
             if($_GET['sa'] == 'addarticle_html') {
-                TPwysiwyg_setup();
+                $context['TPortal']['editor_id'] = 'tp_article_body';
+				TP_prebbcbox($context['TPortal']['editor_id']);
             }
 		}
 		do_subaction($tpsub);
@@ -1010,7 +1011,8 @@ function do_articles()
 		}
 
         if($context['TPortal']['editarticle']['articletype'] == 'html') {
-            TPwysiwyg_setup();
+            $context['TPortal']['editor_id'] = 'tp_article_body';
+			TP_prebbcbox($context['TPortal']['editor_id']);
         }
 
 		// Add in BBC editor before we call in template so the headers are there
